@@ -5,6 +5,7 @@ const CryptoJS = require('crypto-js');
 const { format } = require('date-fns');
 
 const port = process.env.PORT || 3000;
+const hostname = '0.0.0.0'
 
 const uriPass = process.env.URLPASSWORD;
 const app = express();
@@ -207,7 +208,7 @@ app.put('/data/users/updateCartList', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(port, hostname, () => {
   console.log(`Server running on port: ${port}`);
 });
 
