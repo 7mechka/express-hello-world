@@ -4,10 +4,9 @@ const cors = require('cors');
 const CryptoJS = require('crypto-js');
 const { format } = require('date-fns');
 
-const hostname = '0.0.0.0';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-const uriPass = 'a29hZ0Kx';
+const uriPass = process.env.URLPASSWORD;
 const app = express();
 
 const uri = `mongodb+srv://7mechka:${uriPass}@rozetka-copy-claster.uq62j.mongodb.net/?retryWrites=true&w=majority&appName=Rozetka-copy-claster`;
@@ -187,6 +186,7 @@ app.get('/data/users/checkToken', async (req, res) => {
   }
 });
 
+// Оновити корзину у користувача
 app.put('/data/users/updateCartList', async (req, res) => {
   try {
     const { item, token } = req.body;
@@ -204,6 +204,9 @@ app.put('/data/users/updateCartList', async (req, res) => {
   }
 });
 
-app.listen(port, hostname, () => {
-  console.log(`Server running on ${hostname}:${port}`);
+app.listen(port, () => {
+  console.log(`Server running on port: ${port}`);
 });
+
+app.keepAliveTimeout = 120 * 1000;
+app.headersTimeout = 120 * 1000;
