@@ -12,8 +12,6 @@ const app = express();
 const uri = `mongodb+srv://7mechka:${uriPass}@rozetka-copy-claster.uq62j.mongodb.net/?retryWrites=true&w=majority&appName=Rozetka-copy-claster&tls=true`;
 
 const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   tls: true,
   tlsAllowInvalidCertificates: true,
 });
