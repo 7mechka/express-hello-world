@@ -16,7 +16,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   tls: true,
   tlsAllowInvalidCertificates: true,
-  tlsInsecure: true,
 });
 client.connect();
 const db = client.db('switch-store-bd');
