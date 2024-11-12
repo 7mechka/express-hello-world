@@ -197,7 +197,12 @@ app.put('/data/users/updateCartList', async (req, res) => {
 
     const collection = db.collection('users');
 
-    await collection.updateOne({ token: token }, { $set: { cart: item } });
+    const formattedDate = format(new Date(), 'dd-MM-yyyy HH:mm:ss');
+
+    await collection.updateOne(
+      { token: token },
+      { $set: { cart: item, updatedAt: formattedDate } }
+    );
 
     const user = await collection.findOne({ token: token });
 
