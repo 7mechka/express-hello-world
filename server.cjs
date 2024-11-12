@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 const uriPass = process.env.URLPASSWORD;
 const app = express();
 
-const uri = `mongodb+srv://7mechka:${uriPass}@rozetka-copy-claster.uq62j.mongodb.net/?retryWrites=true&w=majority&appName=Rozetka-copy-claster`;
+const uri = `mongodb+srv://7mechka:${uriPass}@rozetka-copy-claster.uq62j.mongodb.net/?retryWrites=true&w=majority&appName=Rozetka-copy-claster&tls=true`;
 
 const client = new MongoClient(uri);
 client.connect();
