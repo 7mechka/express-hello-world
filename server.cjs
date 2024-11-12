@@ -5,7 +5,7 @@ const CryptoJS = require('crypto-js');
 const { format } = require('date-fns');
 
 const port = process.env.PORT || 3000;
-const hostname = '0.0.0.0'
+const hostname = '0.0.0.0';
 
 const uriPass = process.env.URLPASSWORD;
 const app = express();
@@ -51,7 +51,7 @@ app.get('/data/item/sku', async (req, res) => {
 // Отримати схожі товари по тегах і категоріях
 app.get('/data/items/similar', async (req, res) => {
   try {
-    const tags = req.query.tag;
+    const tags = req.query.tag ? req.query.tag.split(',') : [];
     const category = req.query.category;
 
     const collection = db.collection('items');
